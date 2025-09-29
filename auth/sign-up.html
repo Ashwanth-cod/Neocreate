@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - NeoCreate</title>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h1>Create Your NeoCreate Account</h1>
+    <button id="google-signup" class="cta-btn">Sign Up with Google</button>
+  </div>
+
+  <script type="module">
+    import { auth, provider, db } from "../assets/scripts/firebase-config.js";
+    import { signInWithPopup } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
+    import { doc, setDoc, collection } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+
+    const signupBtn = document.getElementById("google-signup");
+
+    signupBtn.addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        // Optional: save user info in Firestore
+        await setDoc(doc(collection(db, "users"), user.uid), {
+          name: user.displayName,
+          email: user.email,
+          createdAt: new Date()
+        });
+
+        // Redirect to login after sign-up
+        window.location.href = "/auth/login.html";
+      } catch (error) {
+        alert("Sign-up failed. Please try again.");
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

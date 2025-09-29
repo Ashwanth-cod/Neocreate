@@ -1,0 +1,31 @@
+Add Sign-In and Sign-Out buttons in HTML.
+Implement signIn() using GoogleAuthProvider and store user info in users/{uid} in Firestore.
+Implement signOut() to log users out.
+Test login/logout locally and verify Firestore writes the user document.
+Create a canvas area in HTML where users can drag elements.
+Implement basic elements: Text, Button, Image.
+Enable drag & drop and resizing of elements on the canvas.
+Store elements in a JS array with properties (position, size, type, content).
+Implement undo/redo functionality using a history stack.
+Add animation options to elements: fade, slide, bounce, scale.
+Add element property controls: color, font, size, background, animation type, duration.
+Update JS array to store element + animation metadata.
+Connect canvas to Firestore: save designs in users/{uid}/designs.
+Limit user designs to a maximum of 5.
+Load saved designs from Firestore into the canvas.
+Implement Privacy toggle to mark designs as private or shared.
+Add Export button to download designs as HTML or JSON.
+Implement Send to Team functionality: Direct / Interactive / Privacy.
+Store team requests in requests collection and track status: pending, in-review, completed.
+Create predefined templates (buttons, text blocks, cards, etc.) and display them in a sidebar.
+Enable users to drag & drop predefined templates onto the canvas.
+Allow users to create custom elements and save them in the templates array.
+Implement comments system per element or per design.
+Store comments in Firestore associated with the design.
+Create a Community Template page for users to submit templates.
+Store submitted templates in communityTemplates collection with status: pending, approved, rejected.
+Build team dashboard to approve/reject community templates.
+Approved templates are added to global template library with credit to the creator.
+Test all features end-to-end: login, canvas, save/load, animations, undo/redo, export, send to team, templates, comments.
+Apply UI polish using Bootstrap: toolbar, modals, buttons, responsive canvas.
+Verify Google Auth, Firestore, and all live features work on the deployed site.
